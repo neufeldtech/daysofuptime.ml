@@ -1,1 +1,21 @@
-0
+<html>
+  <head>
+    <title>Days Of Uptime | daysofuptime.ml</title>
+    <script src="/assets/js/countup.js" charset="utf-8"></script>
+    <script src="/assets/js/moment.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div>
+      Last outage:&nbsp;<span id="lastOutage"></span>
+    </div>
+    <span id="name">Days of uptime:&nbsp;</span><span id="count"></span>
+    <script charset="utf-8">
+      var lastOutage = new moment("20160422","YYYYMMDD"); //Set to last outage recovery date
+      document.getElementById('lastOutage').innerHTML = lastOutage.format('MMMM Do YYYY');
+      var today = new moment();
+      var daysOfUptime = today.diff(lastOutage,'days');
+      var count = new CountUp("count", 0, daysOfUptime, 0, 4);
+      count.start();
+    </script>
+  </body>
+</html>
